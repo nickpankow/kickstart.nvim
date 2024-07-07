@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -676,6 +676,31 @@ require('lazy').setup({
         -- ts_ls = {},
         --
 
+        emmet_ls = {
+          capabilities = capabilities,
+          filetypes = { 'html', 'twig' },
+        },
+
+        phpactor = {
+          capabilities = capabilities,
+          filetypes = { 'php' },
+        },
+
+        tailwindcss = {
+          capabilities = capabilities,
+          filetypes = { 'html', 'css', 'twig' },
+        },
+
+        twiggy_language_server = {
+          capabilities = capabilities,
+          filetypes = { 'twig' },
+        },
+
+        bashls = {
+          capabilities = capabilities,
+          filetypes = { 'sh' },
+        },
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -956,7 +981,51 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
-  -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function(_, opts)
+      local harpoon = require 'harpoon'
+
+      -- REQUIRED
+      harpoon:setup()
+      -- REQUIRED
+
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():add()
+      end, { desc = 'harpoon file' })
+      vim.keymap.set('n', '<C-e>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end, { desc = 'harpoon quick menu' })
+
+      vim.keymap.set('n', '<leader>1', function()
+        harpoon:list():select(1)
+      end)
+      vim.keymap.set('n', '<leader>2', function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set('n', '<leader>3', function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set('n', '<leader>4', function()
+        harpoon:list():select(4)
+      end)
+
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set('n', '<C-S-P>', function()
+        harpoon:list():prev()
+      end)
+      vim.keymap.set('n', '<C-S-N>', function()
+        harpoon:list():next()
+      end)
+    end,
+  },
+  {
+    'ThePrimeagen/vim-be-good',
+  },
+
+  -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
 
@@ -1003,6 +1072,16 @@ require('lazy').setup({
     },
   },
 })
+
+-- Custom keybindings
+-- Reset screen to center when paging
+vim.keymap.set('n', '<C-f>', '<C-f>zz', {})
+vim.keymap.set('n', '<C-b>', '<C-b>zz', {})
+vim.keymap.set('n', '<C-d>', '<C-d>zz', {})
+vim.keymap.set('n', '<C-u>', '<C-u>zz', {})
+
+-- Custom commands
+vim.cmd 'cnoreabbrev ttws :%s/\\s\\+$//'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
