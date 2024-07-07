@@ -1081,7 +1081,8 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', {})
 vim.keymap.set('n', '<C-u>', '<C-u>zz', {})
 
 -- Custom commands
-vim.cmd 'cnoreabbrev ttws :%s/\\s\\+$//'
+-- trim trailing whitespace including tabs in the entire file
+vim.cmd 'cnoreabbrev ttws %s/\\s\\+$//'
 -- convert line to Title Case
 vim.cmd 'cnoreabbrev title .s/\\<./\\u&/g'
 
