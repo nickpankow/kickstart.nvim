@@ -1082,6 +1082,8 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', {})
 
 -- Custom commands
 vim.cmd 'cnoreabbrev ttws :%s/\\s\\+$//'
+-- convert line to Title Case
+vim.cmd 'cnoreabbrev title .s/\\<./\\u&/g'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
