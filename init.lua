@@ -701,6 +701,16 @@ require('lazy').setup({
           filetypes = { 'sh' },
         },
 
+        dockerls = {
+          capabilities = capabilities,
+          filetypes = { 'Dockerfile' },
+        },
+
+        docker_compose_language_service = {
+          capabilities = capabilities,
+          filetypes = { 'docker-composer.yml', 'docker-composer.yaml' },
+        },
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
