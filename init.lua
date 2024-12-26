@@ -678,7 +678,7 @@ require('lazy').setup({
 
         emmet_ls = {
           capabilities = capabilities,
-          filetypes = { 'html', 'twig' },
+          filetypes = { 'html', 'twig', 'blade.php', 'javascriptreact', 'typescriptreact' },
         },
 
         phpactor = {
@@ -688,7 +688,7 @@ require('lazy').setup({
 
         tailwindcss = {
           capabilities = capabilities,
-          filetypes = { 'html', 'css', 'twig' },
+          filetypes = { 'html', 'css', 'twig', 'javascriptreact', 'typescriptreact' },
         },
 
         twiggy_language_server = {
@@ -709,6 +709,11 @@ require('lazy').setup({
         docker_compose_language_service = {
           capabilities = capabilities,
           filetypes = { 'docker-composer.yml', 'docker-composer.yaml' },
+        },
+
+        ts_ls = {
+          capabilities = capabilities,
+          filetypes = { 'ts', 'tsx', 'typescriptreact' },
         },
 
         lua_ls = {
