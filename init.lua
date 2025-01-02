@@ -716,6 +716,8 @@ require('lazy').setup({
           filetypes = { 'ts', 'tsx', 'typescriptreact' },
         },
 
+        clangd = {},
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
